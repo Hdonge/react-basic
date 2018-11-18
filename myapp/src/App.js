@@ -4,14 +4,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      count: 0
+    };
+  };
+
   btnClick() {
-    console.log("button clicked................");
-  }
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
+
   render() {
     return (
       <div>
-        <p>Here is the button</p>
-        <button onClick={this.btnClick}>Click Here</button>
+        <h1>Value: {this.state.count}</h1>
+        <br />
+        <button onClick={this.btnClick.bind(this)}>Increment by 1</button>
       </div>
     );
   }
