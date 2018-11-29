@@ -16,6 +16,12 @@ class App extends Component {
     ]
   };
 
+  delEmp = (index, e) => {
+    const copyemps = Object.assign([], this.state.emps);
+    copyemps.splice(index.id, 1);
+    this.setState({ emps: copyemps });
+  }
+
   render() {
     return (
       <div>
@@ -23,7 +29,7 @@ class App extends Component {
           <tbody>
             {
               this.state.emps.map((emp) => {
-                return (<Emp salary={emp.salary}>{emp.name}</Emp>)
+                return (<Emp salary={emp.salary} key={emp.id} deleteEvent={this.delEmp.bind(this, emp.id)}>{emp.name}</Emp>)
               })
             }
           </tbody>
