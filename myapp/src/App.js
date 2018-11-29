@@ -5,25 +5,25 @@ import './App.css';
 
 class App extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      count: 0
-    };
-  };
+  constructor(props) {
+    super(props);
 
-  btnClick() {
-    this.setState({
-      count: this.state.count + 1
-    });
+    this.state = {
+      data: ''
+    };
+
+    this.updateState = this.updateState.bind(this);
+  }
+
+  updateState(e) {
+    this.setState({ data: e.target.value });
   };
 
   render() {
     return (
       <div>
-        <h1>Value: {this.state.count}</h1>
-        <br />
-        <button onClick={this.btnClick.bind(this)}>Increment by 1</button>
+        <input type="text" value={this.state.data} onChange={this.updateState} />
+        <h4>{this.state.data}</h4>
       </div>
     );
   }
